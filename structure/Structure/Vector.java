@@ -1,3 +1,4 @@
+import Structure.Utils.Utils;
 import java.util.Arrays;
 
 interface Operators<T> {
@@ -21,6 +22,39 @@ public class Vector implements Operators<Integer> {
             array[size++] = value;
         } else {
             System.out.println("Vector is full.");
+        }
+    }
+
+    // Bubble Sort
+    public void bubbleSort() {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - 1 - i; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public void insertRandomElements(int size) {
+        for (int i = 0; i < size; i++) {
+            int random = Utils.randomNumber(100);
+            insert(random);
+        }
+    }
+
+    // Insertion Sort
+    public void insertionSort() {
+        for (int i = 1; i < size; i++) {
+            int key = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
         }
     }
 
@@ -60,5 +94,12 @@ public class Vector implements Operators<Integer> {
 
     public int middleElement() {
         return size > 0 ? array[size / 2] : -1;
+    }
+    
+    public void printArray() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 }

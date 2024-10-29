@@ -1,3 +1,7 @@
+import Structure.Utils.Utils;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     private Node root;
 
@@ -42,13 +46,35 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         return node == null ? 0 : height(node.left) - height(node.right);
     }
 
+    public void inOrderTraversal(Node node, List<T> list) {
+        if (node != null) {
+            inOrderTraversal(node.left, list);
+            list.add(node.value);
+            inOrderTraversal(node.right, list);
+        }
+    }
+
+    public List<T> sortedElements() {
+        List<T> sortedList = new ArrayList<>();
+        inOrderTraversal(root, sortedList);
+        return sortedList;
+    }
+
     @Override
     public void insert(T value) {
         root = insertRecursive(root, value);
     }
 
+    public void insertRandomElements(int size) {
+        for (int i = 0; i < size; i++) {
+            int random = Utils.randomNumber(100);
+            insert((T) Integer.valueOf(random));
+        }
+    }
+
     private Node insertRecursive(Node node, T value) {
-        if (node == null) return new Node(value);
+        if (node == null)
+            return new Node(value);
 
         if (value.compareTo(node.value) < 0) {
             node.left = insertRecursive(node.left, value);
@@ -61,8 +87,10 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         node.height = 1 + max(height(node.left), height(node.right));
         int balance = balanceFactor(node);
 
-        if (balance > 1 && value.compareTo(node.left.value) < 0) return rightRotation(node);
-        if (balance < -1 && value.compareTo(node.right.value) > 0) return leftRotation(node);
+        if (balance > 1 && value.compareTo(node.left.value) < 0)
+            return rightRotation(node);
+        if (balance < -1 && value.compareTo(node.right.value) > 0)
+            return leftRotation(node);
         if (balance > 1 && value.compareTo(node.left.value) > 0) {
             node.left = leftRotation(node.left);
             return rightRotation(node);
@@ -80,8 +108,10 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private boolean searchRecursive(Node node, T value) {
-        if (node == null) return false;
-        if (node.value.equals(value)) return true;
+        if (node == null)
+            return false;
+        if (node.value.equals(value))
+            return true;
         return value.compareTo(node.value) < 0 ? searchRecursive(node.left, value) : searchRecursive(node.right, value);
     }
 
@@ -106,7 +136,6 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     public T middleElement() {
         return root != null ? root.value : null;
     }
-
     private class Node {
         T value;
         Node left, right;

@@ -12,4 +12,10 @@ public class Utils {
         }
         return data;
     }
+
+    public static int randomNumber(int qtd) {
+        Random random = new Random();
+        return random.nextInt(qtd);
+    }
+
 }
