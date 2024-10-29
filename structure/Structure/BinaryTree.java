@@ -34,6 +34,7 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
                 : searchRecursive(node.right, value);
     }
 
+    @Override
     public T firstElement() {
         Node current = root;
         while (current != null && current.left != null) {
@@ -42,6 +43,7 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
         return current != null ? current.value : null;
     }
 
+    @Override
     public T lastElement() {
         Node current = root;
         while (current != null && current.right != null) {

@@ -85,6 +85,7 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         return value.compareTo(node.value) < 0 ? searchRecursive(node.left, value) : searchRecursive(node.right, value);
     }
 
+    @Override
     public T firstElement() {
         Node current = root;
         while (current != null && current.left != null) {
@@ -93,6 +94,7 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         return current != null ? current.value : null;
     }
 
+    @Override
     public T lastElement() {
         Node current = root;
         while (current != null && current.right != null) {
