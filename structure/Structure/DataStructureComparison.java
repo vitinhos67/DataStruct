@@ -25,6 +25,40 @@ public class DataStructureComparison {
         System.out.println("AVLTree Insert Time: " + avlTreeInsertTime + " ns");
     }
 
+    public static void compareQueryFromFirstElement(int numElements) {
+
+        Vector vector = new Vector(numElements);
+        long vectorInsertTime = measureSearchFirstTime(vector);
+
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+        long binaryTreeInsertTime = measureSearchFirstTime(binaryTree);
+
+        AVLTree<Integer> avlTree = new AVLTree<>();
+        long avlTreeInsertTime = measureSearchFirstTime(avlTree);
+
+        System.out.println("Vector Insert Time: " + vectorInsertTime + " ns");
+        System.out.println("BinaryTree Insert Time: " + binaryTreeInsertTime + " ns");
+        System.out.println("AVLTree Insert Time: " + avlTreeInsertTime + " ns");
+
+    }
+
+    public static void compareQueryFromLastElement(int numElements) {
+
+        Vector vector = new Vector(numElements);
+        long vectorInsertTime = measureSearchLastTime(vector);
+
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+        long binaryTreeInsertTime = measureSearchLastTime(binaryTree);
+
+        AVLTree<Integer> avlTree = new AVLTree<>();
+        long avlTreeInsertTime = measureSearchLastTime(avlTree);
+
+        System.out.println("Vector Insert Time: " + vectorInsertTime + " ns");
+        System.out.println("BinaryTree Insert Time: " + binaryTreeInsertTime + " ns");
+        System.out.println("AVLTree Insert Time: " + avlTreeInsertTime + " ns");
+
+    }
+
     private static long measureInsertionTime(Operators<Integer> structure, int[] data) {
         long start = System.nanoTime();
         for (int value : data) {
@@ -35,13 +69,13 @@ public class DataStructureComparison {
 
     private static long measureSearchFirstTime(Operators<Integer> structure) {
         long start = System.nanoTime();
-        Integer firstElement = structure.firstElement();
+        structure.firstElement();
         return System.nanoTime() - start;
     }
 
     private static long measureSearchLastTime(Operators<Integer> structure) {
         long start = System.nanoTime();
-        Integer lastElement = structure.lastElement();
+        structure.lastElement();
         return System.nanoTime() - start;
     }
 
