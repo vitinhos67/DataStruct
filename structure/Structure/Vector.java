@@ -1,6 +1,12 @@
 import java.util.Arrays;
 
-public class Vector {
+interface Operators<T> {
+    void insert(T value);
+    T firstElement();
+    T lastElement();
+}
+
+public class Vector implements Operators<Integer> {
     private int[] array;
     private int size;
 
@@ -9,7 +15,8 @@ public class Vector {
         size = 0;
     }
 
-    public void insert(int value) {
+    @Override
+    public void insert(Integer value) {
         if (size < array.length) {
             array[size++] = value;
         } else {
@@ -41,11 +48,13 @@ public class Vector {
         return -1;
     }
 
-    public int firstElement() {
+    @Override
+    public Integer firstElement() {
         return size > 0 ? array[0] : -1;
     }
 
-    public int lastElement() {
+    @Override
+    public Integer lastElement() {
         return size > 0 ? array[size - 1] : -1;
     }
 

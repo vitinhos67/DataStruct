@@ -1,4 +1,4 @@
-public class AVLTree<T extends Comparable<T>> implements Insertable<T> {
+public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     private Node root;
 
     public AVLTree() {
