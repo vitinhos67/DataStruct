@@ -23,11 +23,11 @@ public class Vector {
                 return i;
             }
         }
-        return -1; // Value not found
+        return -1;
     }
 
     public int binarySearch(int value) {
-        Arrays.sort(array, 0, size); // Sort array for binary search
+        Arrays.sort(array, 0, size);
         int left = 0;
         int right = size - 1;
 
@@ -38,7 +38,7 @@ public class Vector {
             if (array[mid] < value) left = mid + 1;
             else right = mid - 1;
         }
-        return -1; // Value not found
+        return -1;
     }
 
     public int firstElement() {
