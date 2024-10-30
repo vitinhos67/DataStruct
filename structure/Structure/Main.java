@@ -1,4 +1,5 @@
 
+import Structure.Utils.Utils;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -48,19 +49,19 @@ public class Main {
     }
 
     public static void first() {
-        int numElements = 1000;
+        int numElements = (int) Utils.askNumber();
         System.out.println("Comparando o tempo de busca para o primeiro elemento");
         DataStructureComparison.compareQueryFromFirstElement(numElements);
     }
 
     public static void last() {
-        int numElements = 1000;
+        int numElements = (int) Utils.askNumber();
         System.out.println("Comparando o tempo de busca para o ultimo elemento");
         DataStructureComparison.compareQueryFromLastElement(numElements);
     }
 
     public static void insert() {
-        int numElements = 1000;
+        int numElements = (int) Utils.askNumber();
         System.out.println("Comparando tempos de inserção para " + numElements + " elementos:");
         DataStructureComparison.compareStructures(numElements);
     }
