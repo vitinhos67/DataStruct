@@ -1,0 +1,54 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.io",
+        "description": "plotly.io",
+        "detail": "plotly.io",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "structure.Analysis.main",
+        "description": "structure.Analysis.main",
+        "peekOfCode": "def index():\n    fig = px.line(x=[0, 1, 2, 3], y=[10, 11, 12, 13], title=\"Meu Gráfico\")\n    graph_html = pio.to_html(fig, full_html=False)\n    return render_template('index.html', graph_html=graph_html)\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "structure.Analysis.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "structure.Analysis.main",
+        "description": "structure.Analysis.main",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('/')\ndef index():\n    fig = px.line(x=[0, 1, 2, 3], y=[10, 11, 12, 13], title=\"Meu Gráfico\")\n    graph_html = pio.to_html(fig, full_html=False)\n    return render_template('index.html', graph_html=graph_html)\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "structure.Analysis.main",
+        "documentation": {}
+    }
+]
