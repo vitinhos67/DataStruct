@@ -68,10 +68,10 @@ public class Main {
 
     public static void orderingAlgorithm() {
 
-        int size = 5;
+        int size = (int) Utils.askNumber();
 
         // Testando Vector
-        Vector vector = new Vector(10);
+        Vector vector = new Vector(size);
         vector.insertRandomElements(size);
 
         System.out.println("Antes da ordenação:");
