@@ -25,7 +25,6 @@ public class Vector implements Operators<Integer> {
         }
     }
 
-    // Bubble Sort
     public void bubbleSort() {
         for (int i = 0; i < size - 1; i++) {
             for (int j = 0; j < size - 1 - i; j++) {
@@ -58,6 +57,39 @@ public class Vector implements Operators<Integer> {
         }
     }
 
+    public void quickSort() {
+        quickSortRecursive(0, size - 1);
+    }
+
+    private void quickSortRecursive(int low, int high) {
+        if (low < high) {
+            int pi = partition(low, high);
+
+            quickSortRecursive(low, pi - 1);
+            quickSortRecursive(pi + 1, high);
+        }
+    }
+
+    private int partition(int low, int high) {
+        int pivot = array[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (array[j] < pivot) {
+                i++;
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+
+        int temp = array[i + 1];
+        array[i + 1] = array[high];
+        array[high] = temp;
+
+        return i + 1;
+    }
+
     public int sequentialSearch(int value) {
         for (int i = 0; i < size; i++) {
             if (array[i] == value) {
@@ -68,7 +100,7 @@ public class Vector implements Operators<Integer> {
     }
 
     public int binarySearch(int value) {
-        Arrays.sort(array, 0, size);
+        Arrays.sort(array, 0, size);  // Ordena o array antes de realizar a busca binária
         int left = 0;
         int right = size - 1;
 

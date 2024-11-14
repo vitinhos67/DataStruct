@@ -1,6 +1,5 @@
 import Structure.Utils.Utils;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     private Node root;
@@ -46,18 +45,68 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         return node == null ? 0 : height(node.left) - height(node.right);
     }
 
-    public void inOrderTraversal(Node node, List<T> list) {
-        if (node != null) {
-            inOrderTraversal(node.left, list);
-            list.add(node.value);
-            inOrderTraversal(node.right, list);
-        }
+    // Bubble Sort baseado na comparação dos valores dos nós
+    public void bubbleSort() {
+        if (root == null) return;
+
+        boolean swapped;
+        do {
+            swapped = false;
+            Node current = root;
+            while (current != null && current.right != null) {
+                if (current.value.compareTo(current.right.value) > 0) {
+                    T temp = current.value;
+                    current.value = current.right.value;
+                    current.right.value = temp;
+                    swapped = true;
+                }
+                current = current.right;
+            }
+        } while (swapped);
     }
 
-    public List<T> sortedElements() {
-        List<T> sortedList = new ArrayList<>();
-        inOrderTraversal(root, sortedList);
-        return sortedList;
+    public void quickSort() {
+        quickSort(root, findMax(root));
+    }
+    
+    public void quickSort(Node low, Node high) {
+        // Modificando a condição de parada para evitar recursão infinita
+        if (low != null && high != null && low != high && low != high.right && low != high.left) {
+            Node pi = partition(low, high);
+    
+            quickSort(low, pi); // Ordena a subárvore à esquerda do pivô
+            quickSort(pi.right, high); // Ordena a subárvore à direita do pivô
+        }
+    }
+    
+    private Node partition(Node low, Node high) {
+        T pivot = high.value;
+        Node i = low;
+        Node j = low;
+    
+        while (j != high) {
+            if (j.value.compareTo(pivot) <= 0) {
+                T temp = i.value;
+                i.value = j.value;
+                j.value = temp;
+                i = i.right;
+            }
+            j = j.right;
+        }
+    
+        T temp = i.value;
+        i.value = high.value;
+        high.value = temp;
+    
+        return i;
+    }
+    
+    private Node findMax(Node root) {
+        Node current = root;
+        while (current != null && current.right != null) {
+            current = current.right;
+        }
+        return current;
     }
 
     @Override
@@ -81,12 +130,13 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         } else if (value.compareTo(node.value) > 0) {
             node.right = insertRecursive(node.right, value);
         } else {
-            return node;
+            return node; // Evita duplicatas
         }
 
         node.height = 1 + max(height(node.left), height(node.right));
         int balance = balanceFactor(node);
 
+        // Casos de rotação
         if (balance > 1 && value.compareTo(node.left.value) < 0)
             return rightRotation(node);
         if (balance < -1 && value.compareTo(node.right.value) > 0)
@@ -136,6 +186,23 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     public T middleElement() {
         return root != null ? root.value : null;
     }
+
+    // Exibe a árvore em ordem
+    public void printArray() {
+        ArrayList<T> elements = new ArrayList<>();
+        inOrderTraversal(root, elements);
+        System.out.println(elements);
+    }
+
+    // Travessia in-order
+    private void inOrderTraversal(Node node, ArrayList<T> elements) {
+        if (node == null) return;
+        
+        inOrderTraversal(node.left, elements);  // Percorre a subárvore esquerda
+        elements.add(node.value);               // Adiciona o valor do nó na lista
+        inOrderTraversal(node.right, elements); // Percorre a subárvore direita
+    }
+
     private class Node {
         T value;
         Node left, right;

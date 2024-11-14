@@ -1,6 +1,6 @@
-
 import Structure.Utils.Utils;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         test();
@@ -29,6 +29,7 @@ public class Main {
                 break;
             case 3:
                 orderingAlgorithm();
+                break;
             case 4:
                 insert();
                 break;
@@ -49,56 +50,89 @@ public class Main {
     }
 
     public static void first() {
-        int numElements = (int) Utils.askNumber();
+        int numElements = (int) Utils.askNumber(null);
         System.out.println("Comparando o tempo de busca para o primeiro elemento");
+        long startTime = System.currentTimeMillis();
         DataStructureComparison.compareQueryFromFirstElement(numElements);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução para buscar o primeiro elemento: " + (endTime - startTime) + " ms");
     }
 
     public static void last() {
-        int numElements = (int) Utils.askNumber();
-        System.out.println("Comparando o tempo de busca para o ultimo elemento");
+        int numElements = (int) Utils.askNumber(null);
+        System.out.println("Comparando o tempo de busca para o último elemento");
+        long startTime = System.currentTimeMillis();
         DataStructureComparison.compareQueryFromLastElement(numElements);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução para buscar o último elemento: " + (endTime - startTime) + " ms");
     }
 
     public static void insert() {
-        int numElements = (int) Utils.askNumber();
+        int numElements = (int) Utils.askNumber(null);
         System.out.println("Comparando tempos de inserção para " + numElements + " elementos:");
+        long startTime = System.currentTimeMillis();
         DataStructureComparison.compareStructures(numElements);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução para inserção: " + (endTime - startTime) + " ms");
     }
 
     public static void orderingAlgorithm() {
+        int choise = (int) Utils.askNumber("[1] - Quick Sort \n[2] - Bubble Sort");
 
-        int size = (int) Utils.askNumber();
+        int size = (int) Utils.askNumber("Digite o tamanho para os vetores e árvores:");
 
-        // Testando Vector
         Vector vector = new Vector(size);
-        vector.insertRandomElements(size);
-
-        System.out.println("Antes da ordenação:");
-        vector.printArray();
-
-        vector.bubbleSort();
-        System.out.println("Após Bubble Sort:");
-        vector.printArray();
-
-        vector.insertionSort();
-        System.out.println("Após Insertion Sort:");
-        vector.printArray();
-
-        // Testando AVLTree
         AVLTree<Integer> avlTree = new AVLTree<>();
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+
+        vector.insertRandomElements(size);
+        binaryTree.insertRandomElements(size);
         avlTree.insertRandomElements(size);
 
-        System.out.println("Elementos da AVL em ordem:");
-        System.out.println(avlTree.sortedElements());
-
-        // Testando BinaryTree
-        BinaryTree<Integer> binaryTree = new BinaryTree<>();
-        binaryTree.insertRandomElements(size);
-
-        System.out.println("Elementos da BinaryTree em ordem:");
-        System.out.println(binaryTree.sortedElements());
+        switch (choise) {
+            case 1:
+                applyQuickSort(vector, avlTree, binaryTree);
+                break;
+            case 2:
+                applyBubbleSort(vector, avlTree, binaryTree);
+                break;
+            default:
+                System.out.println("Escolha inválida.");
+                break;
+        }
     }
 
+    private static void applyQuickSort(Vector vector, AVLTree<Integer> avlTree, BinaryTree<Integer> binaryTree) {
+        long startTime = System.currentTimeMillis();
+        vector.quickSort();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução do Quick Sort no vetor: " + (endTime - startTime) + " ms");
 
+        startTime = System.currentTimeMillis();
+        avlTree.quickSort();
+        endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução do Quick Sort na AVL Tree: " + (endTime - startTime) + " ms");
+
+        startTime = System.currentTimeMillis();
+        binaryTree.quickSort();
+        endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução do Quick Sort na Binary Tree: " + (endTime - startTime) + " ms");
+    }
+
+    private static void applyBubbleSort(Vector vector, AVLTree<Integer> avlTree, BinaryTree<Integer> binaryTree) {
+        long startTime = System.currentTimeMillis();
+        vector.bubbleSort();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução do Bubble Sort no vetor: " + (endTime - startTime) + " ms");
+
+        startTime = System.currentTimeMillis();
+        avlTree.bubbleSort();
+        endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução do Bubble Sort na AVL Tree: " + (endTime - startTime) + " ms");
+
+        startTime = System.currentTimeMillis();
+        binaryTree.bubbleSort();
+        endTime = System.currentTimeMillis();
+        System.out.println("Tempo de execução do Bubble Sort na Binary Tree: " + (endTime - startTime) + " ms");
+    }
 }

@@ -20,8 +20,13 @@ public class Utils {
         return random.nextInt(qtd);
     }
 
-    public static long askNumber() {
-        System.out.print("Digite a quantidade:");
+    public static long askNumber(String message) {
+
+        if(message == null) {
+            message = "Digite a quantidade:";
+        }
+
+        System.out.print(message);
         return scanner.nextLong();
     }
 
