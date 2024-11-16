@@ -1,7 +1,9 @@
+
 import Structure.Utils.Utils;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         test();
     }

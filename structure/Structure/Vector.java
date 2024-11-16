@@ -1,3 +1,4 @@
+
 import Structure.Utils.Utils;
 import java.util.Arrays;
 
@@ -10,6 +11,7 @@ interface Operators<T> {
 }
 
 public class Vector implements Operators<Integer> {
+
     private int[] array;
     private int size;
 
@@ -111,9 +113,14 @@ public class Vector implements Operators<Integer> {
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            if (array[mid] == value) return mid;
-            if (array[mid] < value) left = mid + 1;
-            else right = mid - 1;
+            if (array[mid] == value) {
+                return mid;
+            }
+            if (array[mid] < value) {
+                left = mid + 1; 
+            }else {
+                right = mid - 1;
+            }
         }
         return -1;
     }
@@ -136,7 +143,7 @@ public class Vector implements Operators<Integer> {
     public String getName() {
         return name;
     }
-    
+
     public void printArray() {
         for (int i = 0; i < size; i++) {
             System.out.print(array[i] + " ");

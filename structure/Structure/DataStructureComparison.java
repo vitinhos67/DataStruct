@@ -1,11 +1,18 @@
+
 import Structure.Utils.Utils;
 
 interface Operators<T> {
+
     void insert(T value);
+
     T firstElement();
+
     T lastElement();
+
     T middleElement();
+
     void insertRandomElements(int num);
+
     String getName();
 }
 
@@ -100,7 +107,7 @@ public class DataStructureComparison {
 
     }
 
-    public static  void compareGetMiddlePosition(int num) {
+    public static void compareGetMiddlePosition(int num) {
         Vector vector = new Vector(num);
         insertRandomElements(vector, num);
         long vectorInsertTime = measureSearchMiddle(vector);
@@ -113,13 +120,11 @@ public class DataStructureComparison {
         insertRandomElements(avlTree, num);
         long avlTreeInsertTime = measureSearchMiddle(avlTree);
 
-
         System.out.println("Vector Insert Time: " + vectorInsertTime + " ns");
         System.out.println("BinaryTree Insert Time: " + binaryTreeInsertTime + " ns");
         System.out.println("AVLTree Insert Time: " + avlTreeInsertTime + " ns");
 
     }
-
 
     private static long measureInsertionTime(Operators<Integer> structure, int[] data) {
         long start = System.nanoTime();

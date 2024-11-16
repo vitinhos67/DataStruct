@@ -1,9 +1,13 @@
+
 import Structure.Utils.Utils;
 
 public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
+
     private Node root;
     private final String name = "BinaryTree";
-    public BinaryTree() {}
+
+    public BinaryTree() {
+    }
 
     @Override
     public void insert(T value) {
@@ -11,8 +15,9 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private Node insertRecursive(Node node, T value) {
-        if (node == null)
+        if (node == null) {
             return new Node(value);
+        }
 
         if (value.compareTo(node.value) < 0) {
             node.left = insertRecursive(node.left, value);
@@ -28,10 +33,12 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private boolean searchRecursive(Node node, T value) {
-        if (node == null)
+        if (node == null) {
             return false;
-        if (node.value.equals(value))
+        }
+        if (node.value.equals(value)) {
             return true;
+        }
 
         return value.compareTo(node.value) < 0
                 ? searchRecursive(node.left, value)
@@ -96,7 +103,9 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private Node bubbleSortRecursive(Node node) {
-        if (node == null) return null;
+        if (node == null) {
+            return null;
+        }
         if (node.left != null && node.left.value.compareTo(node.value) > 0) {
             // Swap values
             T temp = node.value;
@@ -118,7 +127,9 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private Node quickSortRecursive(Node node) {
-        if (node == null) return null;
+        if (node == null) {
+            return null;
+        }
         node.left = quickSortRecursive(node.left);
         node.right = quickSortRecursive(node.right);
 
@@ -140,8 +151,8 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
         return name;
     }
 
-
     private class Node {
+
         T value;
         Node left, right;
 

@@ -1,9 +1,12 @@
+
 import Structure.Utils.Utils;
 import java.util.ArrayList;
 
 public class AVLTree<T extends Comparable<T>> implements Operators<T> {
+
     private Node root;
     private final String name = "AVLTree";
+
     public AVLTree() {
     }
 
@@ -47,7 +50,9 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
 
     // Bubble Sort baseado na comparação dos valores dos nós
     public void bubbleSort() {
-        if (root == null) return;
+        if (root == null) {
+            return;
+        }
 
         boolean swapped;
         do {
@@ -68,22 +73,22 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     public void quickSort() {
         quickSort(root, findMax(root));
     }
-    
+
     public void quickSort(Node low, Node high) {
         // Modificando a condição de parada para evitar recursão infinita
         if (low != null && high != null && low != high && low != high.right && low != high.left) {
             Node pi = partition(low, high);
-    
+
             quickSort(low, pi); // Ordena a subárvore à esquerda do pivô
             quickSort(pi.right, high); // Ordena a subárvore à direita do pivô
         }
     }
-    
+
     private Node partition(Node low, Node high) {
         T pivot = high.value;
         Node i = low;
         Node j = low;
-    
+
         while (j != high) {
             if (j.value.compareTo(pivot) <= 0) {
                 T temp = i.value;
@@ -93,14 +98,14 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
             }
             j = j.right;
         }
-    
+
         T temp = i.value;
         i.value = high.value;
         high.value = temp;
-    
+
         return i;
     }
-    
+
     private Node findMax(Node root) {
         Node current = root;
         while (current != null && current.right != null) {
@@ -122,8 +127,9 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private Node insertRecursive(Node node, T value) {
-        if (node == null)
+        if (node == null) {
             return new Node(value);
+        }
 
         if (value.compareTo(node.value) < 0) {
             node.left = insertRecursive(node.left, value);
@@ -137,10 +143,12 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         int balance = balanceFactor(node);
 
         // Casos de rotação
-        if (balance > 1 && value.compareTo(node.left.value) < 0)
+        if (balance > 1 && value.compareTo(node.left.value) < 0) {
             return rightRotation(node);
-        if (balance < -1 && value.compareTo(node.right.value) > 0)
+        }
+        if (balance < -1 && value.compareTo(node.right.value) > 0) {
             return leftRotation(node);
+        }
         if (balance > 1 && value.compareTo(node.left.value) > 0) {
             node.left = leftRotation(node.left);
             return rightRotation(node);
@@ -158,10 +166,12 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private boolean searchRecursive(Node node, T value) {
-        if (node == null)
+        if (node == null) {
             return false;
-        if (node.value.equals(value))
+        }
+        if (node.value.equals(value)) {
             return true;
+        }
         return value.compareTo(node.value) < 0 ? searchRecursive(node.left, value) : searchRecursive(node.right, value);
     }
 
@@ -197,8 +207,10 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
 
     // Travessia in-order
     private void inOrderTraversal(Node node, ArrayList<T> elements) {
-        if (node == null) return;
-        
+        if (node == null) {
+            return;
+        }
+
         inOrderTraversal(node.left, elements);  // Percorre a subárvore esquerda
         elements.add(node.value);               // Adiciona o valor do nó na lista
         inOrderTraversal(node.right, elements); // Percorre a subárvore direita
@@ -209,6 +221,7 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private class Node {
+
         T value;
         Node left, right;
         int height;
