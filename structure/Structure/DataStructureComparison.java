@@ -6,6 +6,7 @@ interface Operators<T> {
     T lastElement();
     T middleElement();
     void insertRandomElements(int num);
+    String getName();
 }
 
 public class DataStructureComparison {
@@ -25,6 +26,44 @@ public class DataStructureComparison {
         System.out.println("Vector Insert Time: " + vectorInsertTime + " ns");
         System.out.println("BinaryTree Insert Time: " + binaryTreeInsertTime + " ns");
         System.out.println("AVLTree Insert Time: " + avlTreeInsertTime + " ns");
+    }
+
+    public static void compareInsertionOrderning(int numElements) {
+        Vector vector = new Vector(numElements);
+        insertionOrderning(vector, numElements);
+
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+        insertionOrderning(binaryTree, numElements);
+
+        AVLTree<Integer> avlTree = new AVLTree<>();
+        insertionOrderning(avlTree, numElements);
+    }
+
+    public static void compareInsertionOrderningInvert(int numElements) {
+        Vector vector = new Vector(numElements);
+        insertionOrderningInvert(vector, numElements);
+
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+        insertionOrderningInvert(binaryTree, numElements);
+
+        AVLTree<Integer> avlTree = new AVLTree<>();
+        insertionOrderningInvert(avlTree, numElements);
+    }
+
+    private static void insertionOrderning(Operators<Integer> strucutre, int num) {
+        long start = System.nanoTime();
+        for (int i = 0; i < num; i++) {
+            strucutre.insert(i);
+        }
+        System.out.println(strucutre.getName() + " Insert Time: " + (System.nanoTime() - start) + " ns");
+    }
+
+    private static void insertionOrderningInvert(Operators<Integer> strucutre, int num) {
+        long start = System.nanoTime();
+        for (int i = num; i != 0; i--) {
+            strucutre.insert(i);
+        }
+        System.out.println(strucutre.getName() + " Insert Time: " + (System.nanoTime() - start) + " ns");
     }
 
     public static void compareQueryFromFirstElement(int numElements) {

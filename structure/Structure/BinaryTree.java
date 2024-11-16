@@ -2,7 +2,7 @@ import Structure.Utils.Utils;
 
 public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     private Node root;
-
+    private final String name = "BinaryTree";
     public BinaryTree() {}
 
     @Override
@@ -135,6 +135,11 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
         }
         return node;
     }
+
+    public String getName() {
+        return name;
+    }
+
 
     private class Node {
         T value;

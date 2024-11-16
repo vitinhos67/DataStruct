@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     private Node root;
-
+    private final String name = "AVLTree";
     public AVLTree() {
     }
 
@@ -202,6 +202,10 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         inOrderTraversal(node.left, elements);  // Percorre a subárvore esquerda
         elements.add(node.value);               // Adiciona o valor do nó na lista
         inOrderTraversal(node.right, elements); // Percorre a subárvore direita
+    }
+
+    public String getName() {
+        return name;
     }
 
     private class Node {

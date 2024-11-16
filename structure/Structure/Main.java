@@ -80,10 +80,22 @@ public class Main {
     public static void insert() {
         int numElements = (int) Utils.askNumber(null);
         System.out.println("Comparando tempos de inserção para " + numElements + " elementos:");
-        long startTime = System.currentTimeMillis();
-        DataStructureComparison.compareStructures(numElements);
-        long endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução para inserção: " + (endTime - startTime) + " ms");
+
+        int choise = (int) Utils.askNumber("[1] - Aleatoria \n[2] - Ordernada\n[3] -Inversamente Ordernada");
+
+        switch (choise) {
+            case 1:
+                DataStructureComparison.compareStructures(numElements);
+                break;
+            case 2:
+                DataStructureComparison.compareInsertionOrderning(numElements);
+                break;
+            case 3:
+                DataStructureComparison.compareInsertionOrderningInvert(numElements);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     public static void orderingAlgorithm() {

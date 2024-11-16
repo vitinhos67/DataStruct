@@ -6,11 +6,14 @@ interface Operators<T> {
     T firstElement();
     T lastElement();
     T middleElement();
+    String getName();
 }
 
 public class Vector implements Operators<Integer> {
     private int[] array;
     private int size;
+
+    private final String name = "Vector";
 
     public Vector(int capacity) {
         array = new int[capacity];
@@ -128,6 +131,10 @@ public class Vector implements Operators<Integer> {
     @Override
     public Integer middleElement() {
         return size > 0 ? array[size / 2] : -1;
+    }
+
+    public String getName() {
+        return name;
     }
     
     public void printArray() {
