@@ -15,7 +15,8 @@ public class Main {
                 2. Pegar último elemento
                 3. Testar algoritmo de ordenação
                 4. Medir tempo de inserção
-                5. Todos
+                5. Pegar elemento do meio
+                6. Todos
                 """);
 
         int choice = scanner.nextInt();
@@ -34,6 +35,9 @@ public class Main {
                 insert();
                 break;
             case 5:
+                middleElement();
+                break;
+            case 6:
                 all();
                 break;
             default:
@@ -47,6 +51,12 @@ public class Main {
         last();
         orderingAlgorithm();
         insert();
+    }
+
+    private static void middleElement() {
+        int size = (int) Utils.askNumber("Digite o tamanho para os vetores e árvores:");
+        DataStructureComparison.compareGetMiddlePosition(size);
+
     }
 
     public static void first() {

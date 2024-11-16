@@ -5,6 +5,7 @@ interface Operators<T> {
     void insert(T value);
     T firstElement();
     T lastElement();
+    T middleElement();
 }
 
 public class Vector implements Operators<Integer> {
@@ -124,7 +125,8 @@ public class Vector implements Operators<Integer> {
         return size > 0 ? array[size - 1] : -1;
     }
 
-    public int middleElement() {
+    @Override
+    public Integer middleElement() {
         return size > 0 ? array[size / 2] : -1;
     }
     

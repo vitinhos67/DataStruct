@@ -183,6 +183,7 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         return current != null ? current.value : null;
     }
 
+    @Override
     public T middleElement() {
         return root != null ? root.value : null;
     }
