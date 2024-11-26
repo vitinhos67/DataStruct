@@ -31,6 +31,34 @@ public class Vector implements Operators<Integer> {
         }
     }
 
+    public void insertAtFirst(Integer value) {
+        if (size >= array.length) {
+            System.out.println("Vector is full.");
+            return;
+        }
+        for (int i = size; i > 0; i--) {
+            array[i] = array[i - 1];
+        }
+        array[0] = value;
+        size++;
+    }
+
+    public void insertAtIndex(int index, Integer value) {
+        if (size >= array.length) {
+            System.out.println("Vector is full.");
+            return;
+        }
+        if (index < 0 || index > size) {
+            System.out.println("Invalid index.");
+            return;
+        }
+        for (int i = size; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        size++;
+    }
+
     public void bubbleSort() {
         for (int i = 0; i < size - 1; i++) {
             for (int j = 0; j < size - 1 - i; j++) {
@@ -46,6 +74,16 @@ public class Vector implements Operators<Integer> {
     public void insertRandomElements(int size) {
         for (int i = 0; i < size; i++) {
             int random = Utils.randomNumber(100);
+            insert(random);
+        }
+    }
+
+    public void insertRandomElementsWithExludeValue(int size, int exclude) {
+        for (int i = 0; i < size; i++) {
+            int random;
+            do {
+                random = Utils.randomNumber(100);
+            } while (random == exclude); 
             insert(random);
         }
     }

@@ -18,7 +18,8 @@ public class Main {
                 3. Testar algoritmo de ordenação
                 4. Medir tempo de inserção
                 5. Pegar elemento do meio
-                6. Todos
+                6. Encontrar valor
+                7. Encontrar valor por posição (Vetor)
                 """);
 
         int choice = scanner.nextInt();
@@ -40,7 +41,10 @@ public class Main {
                 middleElement();
                 break;
             case 6:
-                all();
+                findValue();
+                break;
+            case 7:
+                findValueByPosition();
                 break;
             default:
                 throw new AssertionError();
@@ -48,11 +52,30 @@ public class Main {
         scanner.close();
     }
 
-    public static void all() {
-        first();
-        last();
-        orderingAlgorithm();
-        insert();
+    private static void findValue() {
+        int size = (int) Utils.askNumber("Digite o tamanho para os vetores e árvores:");
+
+        int choise = (int) Utils.askNumber("[1] Valor predefinido\n[2]Valor Inexistente");
+
+        switch (choise) {
+            case 1:
+                int value = (int) Utils.askNumber("Digite o valor:");
+                int position = (int) Utils.askNumber("[1] - Primeira posição \n[2] - Ultima posição\n[3] -Posição aleatoria");
+                DataStructureComparison.compareSearchToValue(size, value, position, 0);
+                break;
+            case 2:
+                DataStructureComparison.compareSearchToValue(size, 0, 0, 1);
+                break;
+            default:
+                System.out.println("Opcção invalida");
+                findValue();
+        }
+
+
+    }
+
+    private static void findValueByPosition() {
+        
     }
 
     private static void middleElement() {
@@ -115,10 +138,10 @@ public class Main {
 
         switch (choise) {
             case 1:
-                applyQuickSort(vector, avlTree, binaryTree);
+                applyQuickSort(vector);
                 break;
             case 2:
-                applyBubbleSort(vector, avlTree, binaryTree);
+                applyBubbleSort(vector);
                 break;
             default:
                 System.out.println("Escolha inválida.");
@@ -126,37 +149,18 @@ public class Main {
         }
     }
 
-    private static void applyQuickSort(Vector vector, AVLTree<Integer> avlTree, BinaryTree<Integer> binaryTree) {
+    private static void applyQuickSort(Vector vector) {
         long startTime = System.currentTimeMillis();
         vector.quickSort();
         long endTime = System.currentTimeMillis();
         System.out.println("Tempo de execução do Quick Sort no vetor: " + (endTime - startTime) + " ms");
-
-        startTime = System.currentTimeMillis();
-        avlTree.quickSort();
-        endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução do Quick Sort na AVL Tree: " + (endTime - startTime) + " ms");
-
-        startTime = System.currentTimeMillis();
-        binaryTree.quickSort();
-        endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução do Quick Sort na Binary Tree: " + (endTime - startTime) + " ms");
     }
 
-    private static void applyBubbleSort(Vector vector, AVLTree<Integer> avlTree, BinaryTree<Integer> binaryTree) {
+    private static void applyBubbleSort(Vector vector) {
         long startTime = System.currentTimeMillis();
         vector.bubbleSort();
         long endTime = System.currentTimeMillis();
         System.out.println("Tempo de execução do Bubble Sort no vetor: " + (endTime - startTime) + " ms");
 
-        startTime = System.currentTimeMillis();
-        avlTree.bubbleSort();
-        endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução do Bubble Sort na AVL Tree: " + (endTime - startTime) + " ms");
-
-        startTime = System.currentTimeMillis();
-        binaryTree.bubbleSort();
-        endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução do Bubble Sort na Binary Tree: " + (endTime - startTime) + " ms");
     }
 }

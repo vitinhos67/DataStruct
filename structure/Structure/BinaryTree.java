@@ -1,4 +1,3 @@
-
 import Structure.Utils.Utils;
 
 public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
@@ -72,79 +71,43 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
 
     @Override
     public T middleElement() {
-        return root != null ? root.value : null;
+        return root != null ? root.value : null; // Retorna a raiz como "meio"
     }
 
-    public void inOrderTraversal(Node node) {
-        if (node != null) {
-            inOrderTraversal(node.left);
-            System.out.println(node.value);
-            inOrderTraversal(node.right);
-        }
-    }
-
-    // Função para imprimir o array
-    public void printArray() {
+    public void inOrderTraversal() {
         System.out.println("Árvore em ordem (in-order traversal):");
-        printArrayRecursive(root);
+        inOrderRecursive(root);
         System.out.println();
     }
 
-    private void printArrayRecursive(Node node) {
+    private void inOrderRecursive(Node node) {
         if (node != null) {
-            printArrayRecursive(node.left);
+            inOrderRecursive(node.left);
             System.out.print(node.value + " ");
-            printArrayRecursive(node.right);
+            inOrderRecursive(node.right);
         }
     }
 
-    public void bubbleSort() {
-        root = bubbleSortRecursive(root);
+    public int size() {
+        return sizeRecursive(root);
     }
 
-    private Node bubbleSortRecursive(Node node) {
+    private int sizeRecursive(Node node) {
         if (node == null) {
-            return null;
+            return 0;
         }
-        if (node.left != null && node.left.value.compareTo(node.value) > 0) {
-            // Swap values
-            T temp = node.value;
-            node.value = node.left.value;
-            node.left.value = temp;
-            node.left = bubbleSortRecursive(node.left);
-        }
-        if (node.right != null && node.right.value.compareTo(node.value) < 0) {
-            T temp = node.value;
-            node.value = node.right.value;
-            node.right.value = temp;
-            node.right = bubbleSortRecursive(node.right);
-        }
-        return node;
+        return 1 + sizeRecursive(node.left) + sizeRecursive(node.right);
     }
 
-    public void quickSort() {
-        root = quickSortRecursive(root);
+    public int height() {
+        return heightRecursive(root);
     }
 
-    private Node quickSortRecursive(Node node) {
+    private int heightRecursive(Node node) {
         if (node == null) {
-            return null;
+            return 0;
         }
-        node.left = quickSortRecursive(node.left);
-        node.right = quickSortRecursive(node.right);
-
-        // Partition the node
-        if (node.left != null && node.left.value.compareTo(node.value) > 0) {
-            T temp = node.value;
-            node.value = node.left.value;
-            node.left.value = temp;
-        }
-        if (node.right != null && node.right.value.compareTo(node.value) < 0) {
-            T temp = node.value;
-            node.value = node.right.value;
-            node.right.value = temp;
-        }
-        return node;
+        return 1 + Math.max(heightRecursive(node.left), heightRecursive(node.right));
     }
 
     public String getName() {
@@ -152,7 +115,6 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     }
 
     private class Node {
-
         T value;
         Node left, right;
 
