@@ -1,9 +1,7 @@
 
 import Structure.Utils.Utils;
 import java.util.ArrayList;
-
 public class AVLTree<T extends Comparable<T>> implements Operators<T> {
-
     private Node root;
     private final String name = "AVLTree";
 

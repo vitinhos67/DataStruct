@@ -9,7 +9,6 @@ interface Operators<T> {
     T middleElement();
     String getName();
 }
-
 public class Vector implements Operators<Integer> {
 
     private int[] array;

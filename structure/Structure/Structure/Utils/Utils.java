@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Utils {
-
     private static final Random random = new Random();
     private static final Scanner scanner = new Scanner(System.in);
     public static int[] generateData(int num) {
@@ -29,5 +28,4 @@ public class Utils {
         System.out.print(message);
         return scanner.nextLong();
     }
-
 }

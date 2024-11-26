@@ -1,7 +1,6 @@
 import Structure.Utils.Utils;
 
 public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
-
     private Node root;
     private final String name = "BinaryTree";
 
