@@ -217,7 +217,6 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
     public String getName() {
         return name;
     }
-
     private class Node {
 
         T value;
