@@ -1,14 +1,6 @@
 
 import Structure.Utils.Utils;
 import java.util.Arrays;
-
-interface Operators<T> {
-    void insert(T value);
-    T firstElement();
-    T lastElement();
-    T middleElement();
-    String getName();
-}
 public class Vector implements Operators<Integer> {
 
     private int[] array;

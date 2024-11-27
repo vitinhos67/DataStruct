@@ -122,10 +122,9 @@ public class Main {
                 throw new AssertionError();
         }
     }
-
+    // CHEGARRR, O TEU FURTURO E DUVIDOSO, EU VEJO GRANA, EU VEJO DORRRRRRRRRRRR,
     public static void orderingAlgorithm() {
         int choise = (int) Utils.askNumber("[1] - Quick Sort \n[2] - Bubble Sort");
-
         int size = (int) Utils.askNumber("Digite o tamanho para os vetores e árvores:");
 
         Vector vector = new Vector(size);
