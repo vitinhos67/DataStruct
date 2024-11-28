@@ -30,6 +30,16 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
         return searchRecursive(root, value);
     }
 
+    public void insertRandomElementsWithExcludeValue(int size, int exclude) {
+        for (int i = 0; i < size; i++) {
+            int random;
+            do {
+                random = Utils.randomNumber(100);
+            } while (random == exclude); 
+            insert((T) Integer.valueOf(random));
+        }
+    }
+
     private boolean searchRecursive(Node node, T value) {
         if (node == null) {
             return false;
@@ -112,7 +122,6 @@ public class BinaryTree<T extends Comparable<T>> implements Operators<T> {
     public String getName() {
         return name;
     }
-
     private class Node {
         T value;
         Node left, right;

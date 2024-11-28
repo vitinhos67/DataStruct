@@ -112,15 +112,19 @@ public class DataStructureComparison {
     }
 
     public static void compareSearchToValue(int size, int value, int position, int inexistentValue) {
-
         Vector vector = new Vector(size);
-        if(inexistentValue == 1) {
+        BinaryTree<Integer> binaryTree = new BinaryTree<>();
+        AVLTree<Integer> avlTree = new AVLTree<>();
+    
+        if (inexistentValue == 1) {
             switch (position) {
                 case 1:
                     insertOnFisrtPosition(vector, value);
                     break;
                 case 2:
                     insertOnLastPosition(vector, value);
+                    insertOnLastPosition(avlTree, value);
+                    insertOnLastPosition(binaryTree, value);
                     break;
                 case 3:
                     insertOnRandomPosition(vector, value);
@@ -129,15 +133,31 @@ public class DataStructureComparison {
                     break;
             }
         }
-
+    
         insertRandomElementsWithExludeValue(vector, size - 1, value);
+        insertRandomElementsWithExludeValue(binaryTree, size - 1, value);
+        insertRandomElementsWithExludeValue(avlTree, size - 1, value);
+
 
         long start = System.nanoTime();
         vector.sequentialSearch(value);
-        long vectorInsertTime = System.nanoTime() - start;
+        long vectorSearchTime = System.nanoTime() - start;
 
-        System.out.println("Vector search Time: " + vectorInsertTime + " ns");
+        if(position != 1) {
+            start = System.nanoTime();
+            binaryTree.search(value);
+            long binaryTreeSearchTime = System.nanoTime() - start;
+        
+            start = System.nanoTime();
+            avlTree.search(value);
+            long avlTreeSearchTime = System.nanoTime() - start;
+
+            System.out.println("Binary Tree search time: " + binaryTreeSearchTime + " ns");
+            System.out.println("AVL Tree search time: " + avlTreeSearchTime + " ns");
+        }
+        System.out.println("Vector search time: " + vectorSearchTime + " ns");
     }
+
     private static void insertOnFisrtPosition(Operators<Integer> structure, int data) {
         structure.insertAtFirst(data);
     }

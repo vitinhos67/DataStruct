@@ -29,6 +29,16 @@ public class AVLTree<T extends Comparable<T>> implements Operators<T> {
         return x;
     }
 
+    public void insertRandomElementsWithExcludeValue(int size, int exclude) {
+        for (int i = 0; i < size; i++) {
+            int random;
+            do {
+                random = Utils.randomNumber(100);
+            } while (random == exclude); 
+            insert((T) Integer.valueOf(random));
+        }
+    }
+
     private Node leftRotation(Node x) {
         Node y = x.right;
         Node T2 = y.left;
