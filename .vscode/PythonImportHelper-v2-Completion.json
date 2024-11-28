@@ -34,15 +34,6 @@
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
         "label": "index",
         "kind": 2,
         "importPath": "structure.Analysis.main",
@@ -58,51 +49,6 @@
         "description": "structure.Analysis.main",
         "peekOfCode": "app = Flask(__name__)\n@app.route('/')\ndef index():\n    fig = px.line(x=[0, 1, 2, 3], y=[10, 11, 12, 13], title=\"Meu Gráfico\")\n    graph_html = pio.to_html(fig, full_html=False)\n    return render_template('index.html', graph_html=graph_html)\nif __name__ == '__main__':\n    app.run(debug=True)",
         "detail": "structure.Analysis.main",
-        "documentation": {}
-    },
-    {
-        "label": "run_java_test",
-        "kind": 2,
-        "importPath": "structure.Structure.main",
-        "description": "structure.Structure.main",
-        "peekOfCode": "def run_java_test(operation, size, order, repeat=5):\n    \"\"\"\n    Executa o programa Java e coleta as saídas.\n    :param operation: Operação a ser testada.\n    :param size: Tamanho dos dados a serem gerados.\n    :param order: Ordem dos dados (1-3).\n    :param repeat: Número de repetições do teste.\n    :return: Lista com as saídas do programa.\n    \"\"\"\n    results = []",
-        "detail": "structure.Structure.main",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "structure.Structure.main",
-        "description": "structure.Structure.main",
-        "peekOfCode": "def main():\n    \"\"\"\n    Automação de testes para o programa Java.\n    \"\"\"\n    # Testar inserção e buscas\n    for size in data_sizes:\n        for order in orders:\n            print(f\"Testando com tamanho {size} e ordem {order}...\")\n            # Testes de Inserção\n            for insertion_type in [\"insertion_random\", \"insertion_ordered\", \"insertion_reverse\"]:",
-        "detail": "structure.Structure.main",
-        "documentation": {}
-    },
-    {
-        "label": "data_sizes",
-        "kind": 5,
-        "importPath": "structure.Structure.main",
-        "description": "structure.Structure.main",
-        "peekOfCode": "data_sizes = [100, 1000, 10000]\norders = [1, 2, 3]  # 1 - Aleatória, 2 - Ordenada, 3 - Inversamente Ordenada\n# Operações do menu\noperations = {\n    \"first\": 1,                # Buscar primeiro elemento\n    \"last\": 2,                 # Buscar último elemento\n    \"ordering_quick\": (3, 1),  # QuickSort\n    \"ordering_bubble\": (3, 2), # BubbleSort\n    \"insertion_random\": (4, 1),# Inserção Aleatória\n    \"insertion_ordered\": (4, 2),# Inserção Ordenada",
-        "detail": "structure.Structure.main",
-        "documentation": {}
-    },
-    {
-        "label": "orders",
-        "kind": 5,
-        "importPath": "structure.Structure.main",
-        "description": "structure.Structure.main",
-        "peekOfCode": "orders = [1, 2, 3]  # 1 - Aleatória, 2 - Ordenada, 3 - Inversamente Ordenada\n# Operações do menu\noperations = {\n    \"first\": 1,                # Buscar primeiro elemento\n    \"last\": 2,                 # Buscar último elemento\n    \"ordering_quick\": (3, 1),  # QuickSort\n    \"ordering_bubble\": (3, 2), # BubbleSort\n    \"insertion_random\": (4, 1),# Inserção Aleatória\n    \"insertion_ordered\": (4, 2),# Inserção Ordenada\n    \"insertion_reverse\": (4, 3),# Inserção Inversa",
-        "detail": "structure.Structure.main",
-        "documentation": {}
-    },
-    {
-        "label": "operations",
-        "kind": 5,
-        "importPath": "structure.Structure.main",
-        "description": "structure.Structure.main",
-        "peekOfCode": "operations = {\n    \"first\": 1,                # Buscar primeiro elemento\n    \"last\": 2,                 # Buscar último elemento\n    \"ordering_quick\": (3, 1),  # QuickSort\n    \"ordering_bubble\": (3, 2), # BubbleSort\n    \"insertion_random\": (4, 1),# Inserção Aleatória\n    \"insertion_ordered\": (4, 2),# Inserção Ordenada\n    \"insertion_reverse\": (4, 3),# Inserção Inversa\n    \"middle\": 5,               # Buscar elemento do meio\n    \"find_value\": 6            # Encontrar valor",
-        "detail": "structure.Structure.main",
         "documentation": {}
     }
 ]
