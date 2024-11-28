@@ -160,11 +160,11 @@ Algoritimos de ordenação para vetor
     <p>100 elementos</p>
     <table border="1">
       <tr><th>Testes</th><th>Tempo</th></tr>
-      <tr><td>1</td><td>55195 ns</td></tr>
-      <tr><td>2</td><td>72415 ns</td></tr>
-      <tr><td>3</td><td>59566 ns</td></tr>
-      <tr><td>4</td><td>70974 ns</td></tr>
-      <tr><td>5</td><td>31214 ns</td></tr>
+      <tr><td>1</td><td>54548 ns</td></tr>
+      <tr><td>2</td><td>83653 ns</td></tr>
+      <tr><td>3</td><td>35142 ns</td></tr>
+      <tr><td>4</td><td>36416 ns</td></tr>
+      <tr><td>5</td><td>96899 ns</td></tr>
     </table>
     </div>
         <div style="display:block">
@@ -197,11 +197,11 @@ Algoritimos de ordenação para vetor
     <p>100 elementos</p>
     <table border="1">
       <tr><th>Testes</th><th>Tempo</th></tr>
-      <tr><td>1</td><td>4113 ns</td></tr>
-      <tr><td>2</td><td>3911 ns</td></tr>
-      <tr><td>3</td><td>7097 ns</td></tr>
-      <tr><td>4</td><td>3938 ns</td></tr>
-      <tr><td>5</td><td>3547 ns</td></tr>
+      <tr><td>1</td><td>3139 ns</td></tr>
+      <tr><td>2</td><td>5875 ns</td></tr>
+      <tr><td>3</td><td>5875 ns</td></tr>
+      <tr><td>4</td><td>1994 ns</td></tr>
+      <tr><td>5</td><td>3872 ns</td></tr>
     </table>
     </div>
         <div style="display:block">
@@ -234,11 +234,11 @@ Algoritimos de ordenação para vetor
     <p>100 elementos</p>
     <table border="1">
       <tr><th>Testes</th><th>Tempo</th></tr>
-      <tr><td>1</td><td>3833 ns</td></tr>
-      <tr><td>2</td><td>6900 ns</td></tr>
-      <tr><td>3</td><td>6243 ns</td></tr>
-      <tr><td>4</td><td>3436 ns</td></tr>
-      <tr><td>5</td><td>3375 ns</td></tr>
+      <tr><td>1</td><td>3411 ns</td></tr>
+      <tr><td>2</td><td>2735 ns</td></tr>
+      <tr><td>3</td><td>4849 ns</td></tr>
+      <tr><td>4</td><td>1816 ns</td></tr>
+      <tr><td>5</td><td>3411 ns</td></tr>
     </table>
     </div>
         <div style="display:block">
